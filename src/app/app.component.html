@@ -4,7 +4,7 @@
     <div class="app__movies">
       <ng-container *ngFor="let movie of movies">
         <div class="app__movies__movie">
-          <img class="app__movies__movie__image" style="display: inline-block" [src]="'../assets/images/episode_' + movie.episodeNumber + '.jpg'" width="300px" alt="">
+          <img class="app__movies__movie__image" style="display: inline-block" [src]="imagesUrl + '/episode_' + movie.episodeNumber + '.jpg'" width="300px" alt="">
           <div class="app__movies__movie__info">
             <h2 class="app__movies__movie__title">{{movie.name}}</h2>
             <p>{{movie.openingCrawl}}</p>

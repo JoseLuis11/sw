@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://swapi.dev/api'
+  apiUrl: 'https://swapi.dev/api',
+  imagesUrl: 'https://raw.githubusercontent.com/JoseLuis11/sw-imgs/main'
 };
 
 /*

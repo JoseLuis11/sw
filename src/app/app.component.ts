@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {MovieService} from './movie.service';
 import {Movie} from './models/movie';
 import {MovieParser} from './parsers/movie-parser';
+import {environment} from '../environments/environment';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +12,7 @@ import {MovieParser} from './parsers/movie-parser';
 export class AppComponent {
   title = 'angular-template';
   movies: Movie[];
+  imagesUrl = environment.imagesUrl;
 
   constructor(private movieService: MovieService) {
     this.movieService.getMovies().subscribe((response) => {
