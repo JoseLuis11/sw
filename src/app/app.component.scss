@@ -3,15 +3,22 @@
   padding: 32px;
   margin: 0;
   height: calc(100vh - (32px * 2));
+  display: grid;
+  justify-content: center;
+
+  &__title {
+    font-family: 'StarWars', serif;
+    font-size: 64px;
+    text-align: center;
+  }
 
   &__movies {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    grid-row-gap: 32px;
+    grid-gap: 64px;
     &__movie {
       display: grid;
       grid-template-columns: repeat(2, auto);
-      column-gap: 12px;
       width: 600px;
       height: max-content;
       background-color: #181818;
