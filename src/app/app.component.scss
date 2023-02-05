@@ -8,6 +8,7 @@
 
   &__title {
     font-family: 'StarWars', serif;
+    color: #FDD154;
     font-size: 64px;
     text-align: center;
   }
@@ -26,6 +27,9 @@
       border: solid #fff 2px;
       cursor: pointer;
       overflow: hidden;
+      &__name {
+        color: #FDD154;
+      }
       &__info {
         padding: 8px;
       }

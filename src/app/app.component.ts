@@ -3,11 +3,15 @@ import {MovieService} from './movie.service';
 import {Movie} from './models/movie';
 import {MovieParser} from './parsers/movie-parser';
 import {environment} from '../environments/environment';
+import {fadeTriggerAnimation} from './animations/movies-animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    fadeTriggerAnimation
+  ]
 })
 export class AppComponent {
   title = 'angular-template';

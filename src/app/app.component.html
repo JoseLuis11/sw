@@ -3,10 +3,10 @@
 
     <div class="app__movies">
       <ng-container *ngFor="let movie of movies">
-        <div class="app__movies__movie">
+        <div @fade class="app__movies__movie">
           <img class="app__movies__movie__image" style="display: inline-block" [src]="imagesUrl + '/episode_' + movie.episodeNumber + '.jpg'" width="300px" alt="">
           <div class="app__movies__movie__info">
-            <h2 class="app__movies__movie__title">{{movie.name}}</h2>
+            <h2 class="app__movies__movie__name">{{movie.name}}</h2>
             <p>{{movie.releaseDate}}</p>
             <p>Episode: {{movie.episodeNumber}}</p>
             <p>Director: {{movie.director}}</p>
