@@ -8,7 +8,7 @@ import {fadeTriggerAnimation} from '../../animations/movies-animations';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['../../../sass/_mixins.scss', './home.component.scss'],
   animations: [
     fadeTriggerAnimation
   ]
