@@ -29,7 +29,8 @@
 						"styles": [
 							"src/sass/styles.scss"
 						],
-						"scripts": [],
+            "stylePreprocessorOptions": { "includePaths": ["src/sass"] },
+            "scripts": [],
 						"es5BrowserSupport": true
 					},
 					"configurations": {
@@ -86,6 +87,7 @@
 						"styles": [
 							"src/sass/styles.scss"
 						],
+            "stylePreprocessorOptions": { "includePaths": ["src/sass"] },
 						"scripts": [],
 						"assets": [
 							"src/favicon.ico",
