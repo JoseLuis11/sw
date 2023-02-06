@@ -1,0 +1,24 @@
+.bread-crumbs {
+  display: grid;
+  margin: 12px 0;
+  border: solid #FDD154;
+  width: max-content;
+  padding: 12px;
+  border-radius: 16px;
+  grid-auto-flow: column;
+  background-color: #181818;
+  column-gap: 12px;
+
+  &__bread-crumb {
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #FDD154;
+    text-decoration: none;
+    &:not(:first-child):before {
+      content: ">\00a0";
+    }
+    &:hover {
+      opacity: .5;
+    }
+  }
+}

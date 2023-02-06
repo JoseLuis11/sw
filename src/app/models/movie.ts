@@ -6,4 +6,5 @@ export interface Movie {
   producer: string;
   openingCrawl: string;
   characters: string[];
+  url: string;
 }

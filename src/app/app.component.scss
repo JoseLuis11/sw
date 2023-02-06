@@ -1,10 +1,12 @@
+@import "../assets/mixins/media-queries";
+
 .app {
-  background-image: url("https://raw.githubusercontent.com/JoseLuis11/sw-imgs/main/background-stars.jpg");
+  display: grid;
   padding: 32px;
   margin: 0;
   height: calc(100vh - (32px * 2));
-  display: grid;
-  justify-content: center;
+  background-image: url("https://raw.githubusercontent.com/JoseLuis11/sw-imgs/main/background-stars.jpg");
+  overflow-y: scroll;
 
   &__title {
     font-family: 'StarWars', serif;
@@ -13,27 +15,14 @@
     text-align: center;
   }
 
-  &__movies {
+  &__main-content {
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-gap: 64px;
-    &__movie {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      width: 600px;
-      height: max-content;
-      background-color: #181818;
-      border-radius: 16px;
-      cursor: pointer;
-      overflow: hidden;
-      &__name {
-        color: #FDD154;
-      }
-      &__info {
-        padding: 8px;
-      }
-      &__image {
-      }
-    }
+    row-gap: 16px;
+    grid-template-rows: repeat(3, min-content);
   }
+
+  bread-crumbs {
+    margin-left: 12px;
+  }
+
 }

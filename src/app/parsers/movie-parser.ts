@@ -1,24 +1,31 @@
 import {MovieDTO} from '../models/dtos/movie-dto';
 import {Movie} from '../models/movie';
+import {Injectable} from '@angular/core';
 
-
+@Injectable({
+  providedIn: 'root'
+})
 export class MovieParser {
-  static parse(movies: MovieDTO[]) {
-    return movies.reduce(this.transformMovie, []);
+  parse(movies: MovieDTO[]) {
+    return movies.reduce(this.transformMovies, []);
   }
 
-  static transformMovie(movies: Movie[], movieDTO: MovieDTO) {
-    const parsedMovie: Movie = {
+  private transformMovies = (movies: Movie[], movieDTO: MovieDTO) => {
+    console.log();
+    movies.push(this.parseMovie(movieDTO));
+    return movies;
+  }
+
+  parseMovie(movieDTO: MovieDTO): Movie {
+    return {
       name: movieDTO.title,
       releaseDate: new Date(movieDTO.release_date),
       episodeNumber: movieDTO.episode_id,
       director: movieDTO.director,
       producer: movieDTO.producer,
       openingCrawl: movieDTO.opening_crawl,
-      characters: movieDTO.characters
+      characters: movieDTO.characters,
+      url: movieDTO.url
     };
-
-    movies.push(parsedMovie);
-    return movies;
   }
 }

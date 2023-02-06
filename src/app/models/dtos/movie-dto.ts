@@ -6,4 +6,5 @@ export interface MovieDTO {
   producer: string;
   opening_crawl: string;
   characters: string[];
+  url: string;
 }

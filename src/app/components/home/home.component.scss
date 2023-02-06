@@ -1,0 +1,58 @@
+@import "src/assets/mixins/media-queries";
+
+.movies {
+  display: grid;
+  justify-content: start;
+  grid-template-columns: repeat(4, 25%);
+  row-gap: 24px;
+  &__movie {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    height: max-content;
+    margin: 0 12px;
+    background-color: #181818;
+    border-radius: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    &__info {
+      padding: 8px;
+      &__name {
+        color: #FDD154;
+      }
+    }
+    &__image {
+      width: 100%;
+    }
+  }
+
+  @include for-phone-only {
+    grid-template-columns: 100%;
+    margin: 0;
+
+    &__movie {
+      grid-template-columns: 100%;
+    }
+  }
+
+  @include for-tablet-portrait-up {
+    grid-template-columns: repeat(2, 50%);
+
+    &__movie {
+      grid-template-columns: 100%;
+    }
+  }
+
+  @include for-tablet-landscape-up {
+    grid-template-columns: repeat(3, calc(100% / 3));
+  }
+
+  @include for-desktop-up {
+    &__movie {
+      grid-template-columns: repeat(2, 50%);
+    }
+  }
+
+  @include for-big-desktop-up {
+    grid-template-columns: repeat(4, 25%);
+  }
+}

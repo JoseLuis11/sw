@@ -7,12 +7,15 @@ import {environment} from '../environments/environment';
   providedIn: 'root'
 })
 export class MovieService {
-
-  moviesUrl = `${environment.apiUrl}/films`;
+  MOVIES_URL = `${environment.apiUrl}/films`;
 
   constructor(private http: HttpClient) { }
 
   getMovies(): Observable<any> {
-    return this.http.get<any>(this.moviesUrl);
+    return this.http.get<any>(this.MOVIES_URL);
+  }
+
+  getMovie(movieUrl): Observable<any> {
+    return this.http.get<any>(movieUrl);
   }
 }
