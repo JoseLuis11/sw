@@ -1,5 +1,3 @@
-@import "_mixins";
-
 .movies {
   display: grid;
   justify-content: start;
@@ -25,7 +23,7 @@
     }
   }
 
-  @include for-phone-only {
+  @media (max-width: 599px) {
     grid-template-columns: 100%;
     margin: 0;
 
@@ -33,26 +31,23 @@
       grid-template-columns: 100%;
     }
   }
-
-  @include for-tablet-portrait-up {
+  @media (min-width: 600px) {
     grid-template-columns: repeat(2, 50%);
 
     &__movie {
       grid-template-columns: 100%;
     }
   }
-
-  @include for-tablet-landscape-up {
+  @media (min-width: 900px) {
     grid-template-columns: repeat(3, calc(100% / 3));
   }
-
-  @include for-desktop-up {
+  @media (min-width: 1200px) {
     &__movie {
       grid-template-columns: repeat(2, 50%);
     }
   }
-
-  @include for-big-desktop-up {
+  @media (min-width: 1800px) {
     grid-template-columns: repeat(4, 25%);
   }
+
 }
