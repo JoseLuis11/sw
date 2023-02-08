@@ -1,16 +1,22 @@
 .movie-details {
   display: grid;
-  grid-template-columns: repeat(2, 50%);
+  width: calc(100vw - 88px);
+  grid-template-columns: repeat(2, auto);
   height: max-content;
   margin: 0 12px;
   background-color: #181818;
   border-radius: 16px;
-  cursor: pointer;
   overflow: hidden;
   &__info {
-    padding: 8px;
+    padding: 16px;
+    font-size: 20px;
+
     &__name {
       color: #FDD154;
+    }
+    &__opening-crawl {
+      word-wrap: break-word;
+      perspective: 50px;
     }
   }
   &__image {
