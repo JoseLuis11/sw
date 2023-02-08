@@ -23,6 +23,7 @@
     }
   }
 
+  // I have mixins in sass/_mixins.scss for this but it does not work in stackblitz
   @media (max-width: 599px) {
     grid-template-columns: 100%;
     margin: 0;

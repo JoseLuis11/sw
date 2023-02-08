@@ -1,4 +1,5 @@
 <div class="bread-crumbs">
-  <a class="bread-crumbs__bread-crumb" [routerLink]="'/movies'">Movies</a>
-  <a class="bread-crumbs__bread-crumb" [routerLink]="'/movies'">Movies</a>
+  <ng-container *ngFor="let breadCrumb of breadCrumbs">
+    <a class="bread-crumbs__bread-crumb" [routerLink]="breadCrumb.link">{{breadCrumb.label}}</a>
+  </ng-container>
 </div>

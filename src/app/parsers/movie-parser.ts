@@ -11,7 +11,6 @@ export class MovieParser {
   }
 
   private transformMovies = (movies: Movie[], movieDTO: MovieDTO) => {
-    console.log();
     movies.push(this.parseMovie(movieDTO));
     return movies;
   }
