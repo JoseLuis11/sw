@@ -1,6 +1,5 @@
 .movie-details {
   display: grid;
-  width: calc(100vw - 88px);
   grid-template-columns: repeat(2, auto);
   height: max-content;
   margin: 0 12px;
@@ -32,6 +31,7 @@
 
   @media (max-width: 599px) {
     grid-template-columns: 100%;
+    margin: 0;
 
     &__image {
       width: 100%;
