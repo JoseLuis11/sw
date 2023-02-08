@@ -1,3 +1,6 @@
-<p>
-  character-details works!
-</p>
+<div class="character-details" *ngIf="character">
+  <h2 class="character-details__name">{{character.name}} ({{character.birth}})</h2>
+  <p>Gender: {{character.gender}}</p>
+  <p>Hair Color: {{character.hairColor}}</p>
+  <p>Eye Color: {{character.eyeColor}}</p>
+</div>

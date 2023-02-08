@@ -1,5 +1,5 @@
 <div class="bread-crumbs">
   <ng-container *ngFor="let breadCrumb of breadCrumbs">
-    <a class="bread-crumbs__bread-crumb" [routerLink]="breadCrumb.link">{{breadCrumb.label}}</a>
+    <a class="bread-crumbs__bread-crumb" [routerLink]="breadCrumb.link" [queryParams]="breadCrumb.queryParams ? breadCrumb.queryParams : {}">{{breadCrumb.label}}</a>
   </ng-container>
 </div>

@@ -29,4 +29,8 @@ export class MovieService {
   getMovieImageSrc(movie: Movie): string {
     return movie ? this.IMAGES_URL + movie.episodeNumber + '.jpg' : '';
   }
+
+  getMoviesPromises(moviesUrls: string[]) {
+    return moviesUrls.map(movieUrl => this.getMovie(movieUrl).toPromise());
+  }
 }

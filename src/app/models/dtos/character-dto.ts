@@ -6,4 +6,5 @@ export interface CharacterDTO {
   eye_color: string;
   homeworld: string;
   films: string[];
+  url: string;
 }

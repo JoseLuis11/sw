@@ -6,8 +6,8 @@ import {MovieParser} from '../../parsers/movie-parser';
 import {environment} from '../../../environments/environment';
 import {BreadcrumbsService} from '../../services/breadcrumbs.service';
 import {CharacterService} from '../../services/character.service';
-import {Character} from '../../models/character';
 import {Sort} from '../../utils/sort';
+import {CharacterDTO} from '../../models/dtos/character-dto';
 
 @Component({
   selector: 'app-movie-details',
@@ -16,7 +16,8 @@ import {Sort} from '../../utils/sort';
 })
 export class MovieDetailsComponent implements OnInit {
   movie: Movie;
-  characters: Character[] = [];
+  movieId: string;
+  characters: CharacterDTO[] = [];
 
   constructor(
     private movieService: MovieService,
@@ -28,7 +29,8 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const movieUrl = `${environment.apiUrl}/films/${params.get('id')}`;
+      this.movieId = params.get('id');
+      const movieUrl = `${environment.apiUrl}/films/${this.movieId}`;
       this.getMovie(movieUrl);
     });
   }
@@ -53,13 +55,13 @@ export class MovieDetailsComponent implements OnInit {
     return this.movieService.getMovieImageSrc(movie);
   }
 
-  getCharacterId(character: Character) {
+  getCharacterId(character: CharacterDTO) {
     return this.characterService.getCharacterId(character.url);
   }
 
   getCharacters() {
     const promises = this.characterService.getCharactersPromises(this.movie.characters);
-    Promise.all<Character>(promises).then((characters: Character[]) => {
+    Promise.all<CharacterDTO>(promises).then((characters: CharacterDTO[]) => {
       this.characters = characters.sort((a, b) => Sort.sortStringsDesc(a.name, b.name));
     });
   }

@@ -2,14 +2,16 @@
   <div class="movie-details">
     <img class="movie-details__image" [src]="getMovieImageSrc(movie)" alt="">
     <div class="movie-details__info">
-      <p class="movie-details__info__name">{{movie.name}} ({{movie.releaseDate | date}})</p>
+      <h2 class="movie-details__info__name">{{movie.name}} ({{movie.releaseDate | date}})</h2>
       <p>Episode: {{movie.episodeNumber}}</p>
       <p>Director: {{movie.director}}</p>
       <p>Producer: {{movie.producer}}</p>
       <p class="movie-details__info__opening-crawl">{{movie.openingCrawl}}</p>
       <p class="movie-details__info__characters">Characters: </p>
       <ng-container *ngFor="let character of characters; let i = index">
-          <a class="movie-details__info__characters__character" [routerLink]="['/characters', getCharacterId(character)]">{{character.name}}</a>
+          <a class="movie-details__info__characters__character"
+             [routerLink]="['/characters', getCharacterId(character)]"
+             [queryParams]="{movie: movieId}">{{character.name}}</a>
           <span *ngIf="i != characters.length - 1">,&nbsp;</span>
       </ng-container>
     </div>

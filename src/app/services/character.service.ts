@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Character} from '../models/character';
 import {Observable} from 'rxjs';
 import {Entity} from '../utils/entity';
+import {CharacterDTO} from '../models/dtos/character-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  getCharacter(characterUrl: string): Observable<Character> {
-    return this.http.get<Character>(characterUrl);
+  getCharacter(characterUrl: string): Observable<CharacterDTO> {
+    return this.http.get<CharacterDTO>(characterUrl);
   }
 
   getCharactersPromises(charactersUrls: string[]) {
