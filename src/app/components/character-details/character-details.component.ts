@@ -11,7 +11,9 @@ import {CharacterParser} from '../../parsers/character-parser';
 import {PlanetService} from '../../services/planet.service';
 import {Planet} from '../../models/planet';
 import {Sort} from '../../utils/sort';
+import {StringUtils} from '../../utils/stringUtils';
 import {MovieDTO} from '../../models/dtos/movie-dto';
+import {TooltipPosition} from '../../enums/tooltip-position.enum';
 
 @Component({
   selector: 'app-character-details',
@@ -21,7 +23,8 @@ import {MovieDTO} from '../../models/dtos/movie-dto';
 export class CharacterDetailsComponent implements OnInit {
   character: Character;
   homeWorld: Planet;
-  relatedFilms: string[];
+  relatedFilms: string;
+  TooltipPosition = TooltipPosition;
 
   constructor(
     private characterService: CharacterService,
@@ -54,7 +57,6 @@ export class CharacterDetailsComponent implements OnInit {
   getPlanet(planetUrl) {
     this.planetService.getPlanet(planetUrl).subscribe((planet: Planet) => {
       this.homeWorld = planet;
-      console.log('homeee', this.homeWorld);
     });
   }
 
@@ -103,8 +105,8 @@ export class CharacterDetailsComponent implements OnInit {
   getRelatedFilms() {
     const promises = this.movieService.getMoviesPromises(this.character.relatedFilms);
     Promise.all<MovieDTO>(promises).then((movies: MovieDTO[]) => {
-      this.relatedFilms = movies.map(movie => movie.title).sort((a, b) => Sort.sortStringsDesc(a, b));
-      console.log(this.relatedFilms);
+      const relatedFilms = movies.map(movie => movie.title).sort((a, b) => Sort.sortStringsDesc(a, b));
+      this.relatedFilms = StringUtils.getStringWithComas(relatedFilms);
     });
   }
 

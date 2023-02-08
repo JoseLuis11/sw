@@ -15,5 +15,59 @@ html, body {
   color: #FFF2D8;
 }
 
+.tooltip-container {
+  width: 300px;
+  font-size: 14px;
+  text-align: center;
+  z-index: 100;
+  position: absolute;
+  padding: 6px 12px;
+  font-weight: 600;
+  color: #FFF2D8;
+  background: #181818;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translate(-50%, -30%);
+  animation: tooltip-slide 0.18s ease-out 0.5s;
+  animation-fill-mode: forwards;
+  pointer-events: none;
+  border: 2px solid #FFF2D8;
 
+  &::before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+
+  &.right {
+    &::before {
+      border-top: 5px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid #FFF2D8;
+      top: 8px;
+      left: -10px;
+    }
+  }
+  &.left {
+    &::before {
+      border-top: 5px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid #FFF2D8;
+      top: 8px;
+      right: -10px;
+    }
+  }
+}
+
+@keyframes tooltip-slide {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
 

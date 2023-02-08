@@ -13,6 +13,7 @@ import {BreadcrumbsService} from './services/breadcrumbs.service';
 import {CharacterService} from './services/character.service';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import {DirectivesModule} from './directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DirectivesModule
   ],
   providers: [MovieService, BreadcrumbsService, CharacterService],
   bootstrap: [AppComponent]

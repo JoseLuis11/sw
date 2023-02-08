@@ -1,6 +1,13 @@
 <div class="character-details" *ngIf="character">
   <h2 class="character-details__name">{{character.name}} ({{character.birth}})</h2>
-  <p>Gender: {{character.gender}}</p>
-  <p>Hair Color: {{character.hairColor}}</p>
-  <p>Eye Color: {{character.eyeColor}}</p>
+  <div class="character-details__info">
+    <div class="character-details__info__main">
+      <p>Gender: {{character.gender}}</p>
+      <p>Hair Color: {{character.hairColor}}</p>
+      <p>Eye Color: {{character.eyeColor}}</p>
+    </div>
+    <div class="character-details__info__secondary">
+      <p class="character-details__info__secondary__related-films" [tooltip]="relatedFilms" [position]="TooltipPosition.LEFT">Related Films</p>
+    </div>
+  </div>
 </div>
