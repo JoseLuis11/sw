@@ -1,1 +1,6 @@
-<img style="display: inline-block" [src]="movie ? imagesUrl + '/episode_' + movie.episodeNumber + '.jpg' : ''" width="300px" alt="">
+<ng-container *ngIf="movie">
+  <div class="movie-details">
+    <img class="movie-details__image" [src]="getMovieImageSrc(movie)" alt="">
+    <div class="movie-details__info"></div>
+  </div>
+</ng-container>

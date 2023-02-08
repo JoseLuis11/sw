@@ -5,6 +5,7 @@
   height: calc(100vh - (32px * 2));
   background-image: url("https://raw.githubusercontent.com/JoseLuis11/sw-imgs/main/background-stars.jpg");
   overflow-y: scroll;
+  animation: animatedBackground 200s linear infinite alternate;
 
   &__title {
     font-family: 'StarWars', serif;
@@ -21,6 +22,15 @@
 
   bread-crumbs {
     margin-left: 12px;
+  }
+
+  @keyframes animatedBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
   }
 
 }

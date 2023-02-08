@@ -1,7 +1,7 @@
 <div class="movies">
   <ng-container *ngFor="let movie of movies">
     <div @fade class="movies__movie" [routerLink]="['/movies', getMovieId(movie)]">
-      <img class="movies__movie__image" style="display: inline-block" [src]="imagesUrl + '/episode_' + movie.episodeNumber + '.jpg'" [alt]="'star wars episode ' + movie.episodeNumber">
+      <img class="movies__movie__image" [src]="getMovieImageSrc(movie)" [alt]="'star wars episode ' + movie.episodeNumber">
       <div class="movies__movie__info">
         <h2 class="movies__movie__info__name">{{movie.name}}</h2>
         <p>{{movie.releaseDate | date}}</p>

@@ -42,4 +42,8 @@ export class MovieDetailsComponent implements OnInit {
       link: `/movies/${this.movieService.getMovieId(this.movie.url)}`
     });
   }
+
+  getMovieImageSrc(movie: Movie): string {
+    return this.movieService.getMovieImageSrc(movie);
+  }
 }

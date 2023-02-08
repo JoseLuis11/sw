@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Movie} from '../../models/movie';
-import {environment} from '../../../environments/environment';
 import {MovieService} from '../../services/movie.service';
 import {MovieParser} from '../../parsers/movie-parser';
 import {fadeTriggerAnimation} from '../../animations/movies-animations';
@@ -16,7 +15,6 @@ import {BreadcrumbsService} from '../../services/breadcrumbs.service';
 })
 export class HomeComponent implements OnInit {
   movies: Movie[];
-  imagesUrl = environment.imagesUrl;
 
   constructor(private movieService: MovieService, private movieParser: MovieParser, private breadCrumbsService: BreadcrumbsService) {}
 
@@ -31,4 +29,7 @@ export class HomeComponent implements OnInit {
     return this.movieService.getMovieId(movie.url);
   }
 
+  getMovieImageSrc(movie: Movie) {
+    return this.movieService.getMovieImageSrc(movie);
+  }
 }
