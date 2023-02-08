@@ -21,4 +21,8 @@
       opacity: .5;
     }
   }
+
+  @media (max-width: 599px) {
+    grid-auto-flow: row;
+  }
 }
