@@ -1,5 +1,3 @@
-@import "animations";
-
 .app {
   display: grid;
   padding: 32px;
@@ -35,4 +33,15 @@
   @media (min-width: 1800px) {
     animation: animatedBackground 100s linear infinite alternate;
   }
+
+  //I have an animation in sass/_animations.scss for this but it does not work in stackblitz
+  @keyframes animatedBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }
+
 }
