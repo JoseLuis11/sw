@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Movie} from '../models/movie';
+import {Entity} from '../utils/entity';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,7 @@ export class MovieService {
   }
 
   getMovieId(movieUrl: string) {
-    movieUrl = movieUrl.slice(0, -1);
-    return /[^/]*$/.exec(movieUrl)[0];
+    return Entity.getEntityId(movieUrl);
   }
 
   getMovieImageSrc(movie: Movie): string {

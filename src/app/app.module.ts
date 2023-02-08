@@ -10,13 +10,18 @@ import { HomeComponent } from './components/home/home.component';
 import {AppRoutingModule} from './routes/app-routing.module';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import {BreadcrumbsService} from './services/breadcrumbs.service';
+import {CharacterService} from './services/character.service';
+import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BreadCrumbsComponent,
     HomeComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    CharacterDetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,7 @@ import {BreadcrumbsService} from './services/breadcrumbs.service';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [MovieService, BreadcrumbsService],
+  providers: [MovieService, BreadcrumbsService, CharacterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

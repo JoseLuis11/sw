@@ -6,4 +6,5 @@ export interface Character {
   eyeColor: string;
   homeWorld: string;
   relatedFilms: string[];
+  url: string;
 }

@@ -5,6 +5,9 @@ import {ActivatedRoute} from '@angular/router';
 import {MovieParser} from '../../parsers/movie-parser';
 import {environment} from '../../../environments/environment';
 import {BreadcrumbsService} from '../../services/breadcrumbs.service';
+import {CharacterService} from '../../services/character.service';
+import {Character} from '../../models/character';
+import {Sort} from '../../utils/sort';
 
 @Component({
   selector: 'app-movie-details',
@@ -13,18 +16,19 @@ import {BreadcrumbsService} from '../../services/breadcrumbs.service';
 })
 export class MovieDetailsComponent implements OnInit {
   movie: Movie;
-  imagesUrl = environment.imagesUrl;
+  characters: Character[] = [];
 
   constructor(
     private movieService: MovieService,
     private movieParser: MovieParser,
     private route: ActivatedRoute,
-    private breadCrumbsService: BreadcrumbsService
+    private breadCrumbsService: BreadcrumbsService,
+    private characterService: CharacterService
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const movieUrl = `${environment.apiUrl}/films/${params.get('movieUrl')}`;
+      const movieUrl = `${environment.apiUrl}/films/${params.get('id')}`;
       this.getMovie(movieUrl);
     });
   }
@@ -33,6 +37,8 @@ export class MovieDetailsComponent implements OnInit {
     this.movieService.getMovie(movieUrl).subscribe(response => {
       this.movie = this.movieParser.parseMovie(response);
       this.addBreadCrumb();
+      this.getCharacters();
+      this.breadCrumbsService.removeOtherLevels(2);
     });
   }
 
@@ -45,5 +51,16 @@ export class MovieDetailsComponent implements OnInit {
 
   getMovieImageSrc(movie: Movie): string {
     return this.movieService.getMovieImageSrc(movie);
+  }
+
+  getCharacterId(character: Character) {
+    return this.characterService.getCharacterId(character.url);
+  }
+
+  getCharacters() {
+    const promises = this.characterService.getCharactersPromises(this.movie.characters);
+    Promise.all<Character>(promises).then((characters: Character[]) => {
+      this.characters = characters.sort((a, b) => Sort.sortStringsDesc(a.name, b.name));
+    });
   }
 }

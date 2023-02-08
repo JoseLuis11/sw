@@ -1,5 +1,5 @@
 <div class="app">
-  <h1 class="app__title">Star Wars Movies</h1>
+  <h1 *ngIf="!isNotFoundPage()" class="app__title">Star Wars Movies</h1>
   <div class="app__main-content">
     <bread-crumbs></bread-crumbs>
     <router-outlet></router-outlet>

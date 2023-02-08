@@ -12,14 +12,30 @@
     font-size: 20px;
 
     &__name {
+      margin-top: 0;
       color: #FDD154;
     }
     &__opening-crawl {
       word-wrap: break-word;
       perspective: 50px;
     }
+    &__characters {
+      margin-bottom: 6px;
+      &__character {
+        color: #FFF2D8;
+      }
+    }
   }
   &__image {
     width: 300px;
+  }
+
+  @media (max-width: 599px) {
+    grid-template-columns: 100%;
+    margin: 0;
+
+    &__image {
+      width: 100%;
+    }
   }
 }

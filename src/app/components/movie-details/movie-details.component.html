@@ -7,6 +7,11 @@
       <p>Director: {{movie.director}}</p>
       <p>Producer: {{movie.producer}}</p>
       <p class="movie-details__info__opening-crawl">{{movie.openingCrawl}}</p>
+      <p class="movie-details__info__characters">Characters: </p>
+      <ng-container *ngFor="let character of characters; let i = index">
+          <a class="movie-details__info__characters__character" [routerLink]="['/characters', getCharacterId(character)]">{{character.name}}</a>
+          <span *ngIf="i != characters.length - 1">,&nbsp;</span>
+      </ng-container>
     </div>
   </div>
 </ng-container>
