@@ -5,7 +5,7 @@
   height: calc(100vh - (32px * 2));
   background-image: url("https://raw.githubusercontent.com/JoseLuis11/sw-imgs/main/background-stars.jpg");
   overflow-y: scroll;
-  animation: animatedBackground 300s linear infinite alternate;
+  animation: animatedBackground 200s linear infinite alternate;
 
   &__title {
     font-family: 'StarWars', serif;
@@ -24,18 +24,6 @@
     margin-left: 12px;
   }
 
-  // I have mixins in sass/_mixins.scss for this but it does not work in stackblitz
-  @media (max-width: 599px) {
-    animation: animatedBackground 300s linear infinite alternate;
-  }
-  @media (min-width: 900px) {
-    animation: animatedBackground 250s linear infinite alternate;
-  }
-  @media (min-width: 1800px) {
-    animation: animatedBackground 100s linear infinite alternate;
-  }
-
-  //I have an animation in sass/_animations.scss for this but it does not work in stackblitz
   @keyframes animatedBackground {
     from {
       background-position: 0 0;
