@@ -71,7 +71,6 @@ export class CharacterDetailsComponent implements OnInit {
   manageBreadCrumbs(params) {
     if (!params.movie) {
       this.addBreadCrumb();
-      this.loadingService.changeLoading({isLoading: false});
       return;
     } else if (params.movie && this.breadCrumbsService.getBreadCrumbs().length === 2) {
       this.addBreadCrumbWithMovie(params.movie);
@@ -86,7 +85,6 @@ export class CharacterDetailsComponent implements OnInit {
       const movie = this.movieParser.parseMovie(response);
       this.addMovieBreadCrumb(movie);
       this.addBreadCrumbWithMovie(movieId);
-      this.loadingService.changeLoading({isLoading: false});
     });
   }
 
@@ -103,7 +101,6 @@ export class CharacterDetailsComponent implements OnInit {
       link: `/characters/${this.characterService.getCharacterId(this.character.url)}`,
       queryParams: {movie: movieId}
     });
-    this.loadingService.changeLoading({isLoading: false});
   }
 
   addMovieBreadCrumb(movie: Movie) {
@@ -118,6 +115,7 @@ export class CharacterDetailsComponent implements OnInit {
     Promise.all<MovieDTO>(promises).then((movies: MovieDTO[]) => {
       const relatedFilms = movies.map(movie => movie.title).sort((a, b) => Sort.sortStringsDesc(a, b));
       this.relatedFilms = StringUtils.getStringWithComas(relatedFilms);
+      this.loadingService.changeLoading({isLoading: false});
     });
   }
 

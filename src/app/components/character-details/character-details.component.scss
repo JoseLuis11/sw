@@ -19,6 +19,9 @@
     &__secondary {
       &__related-films {
         width: max-content;
+        &.mobile {
+          width: 100%;
+        }
       }
       &__home-world {
         display: grid;
@@ -43,12 +46,25 @@
       }
     }
   }
-
-  @media (max-width: 900px) {
+  @media (max-width: 599px) {
+    &__info__secondary__related-films {
+      display: none;
+      &.mobile {
+        display: inherit;
+      }
+    }
+  }
+  @media (min-width: 600px) {
     &__info {
       justify-content: start;
       &__main {
         grid-template-columns: 100%;
+      }
+      &____secondary__related-films {
+        display: inherit;
+        &.mobile {
+          display: none;
+        }
       }
     }
   }

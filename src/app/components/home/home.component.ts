@@ -17,6 +17,7 @@ import {Entity} from '../../enums/entity.enum';
 })
 export class HomeComponent implements OnInit {
   movies: Movie[];
+  sortEpisode = 'ASC';
 
   constructor(private movieService: MovieService,
               private movieParser: MovieParser,
@@ -38,5 +39,15 @@ export class HomeComponent implements OnInit {
 
   getMovieImageSrc(movie: Movie) {
     return this.movieService.getMovieImageSrc(movie);
+  }
+
+  sortByEpisode() {
+    if (this.sortEpisode === 'ASC') {
+      this.movies = this.movies.sort((a, b) => a.episodeNumber - b.episodeNumber);
+      this.sortEpisode = 'DESC';
+    } else {
+      this.movies = this.movies.sort((a, b) => b.episodeNumber - a.episodeNumber);
+      this.sortEpisode = 'ASC';
+    }
   }
 }
