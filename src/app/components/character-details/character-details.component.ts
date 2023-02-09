@@ -46,7 +46,7 @@ export class CharacterDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const characterUrl = `${environment.apiUrl}/people/${params.get('id')}`;
-      this.loadingService.changeLoading({isLoading: true, entity: Entity.MOVIE});
+      this.loadingService.changeLoading({isLoading: true, entity: Entity.CHARACTER});
       this.getCharacter(characterUrl);
     });
   }
