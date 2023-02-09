@@ -36,7 +36,7 @@
           padding: 12px;
           cursor: pointer;
           background-color: transparent;
-          margin-top: 14px;
+          margin-top: 24px;
         }
         &__info {
           &__name {
@@ -47,21 +47,23 @@
     }
   }
   @media (max-width: 599px) {
-    &__info__secondary__related-films {
-      display: none;
-      &.mobile {
-        display: inherit;
-      }
-    }
-  }
-  @media (min-width: 600px) {
     &__info {
       justify-content: start;
       &__main {
         grid-template-columns: 100%;
       }
-      &____secondary__related-films {
-        display: inherit;
+      &__secondary__related-films {
+        display: none;
+        &.mobile {
+          display: initial;
+        }
+      }
+    }
+  }
+  @media (min-width: 600px) {
+    &__info {
+      &__secondary__related-films {
+        display: initial;
         &.mobile {
           display: none;
         }
