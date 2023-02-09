@@ -14,17 +14,23 @@ import {Sort} from '../../utils/sort';
 import {StringUtils} from '../../utils/stringUtils';
 import {MovieDTO} from '../../models/dtos/movie-dto';
 import {TooltipPosition} from '../../enums/tooltip-position.enum';
+import {collapseTriggerAnimation} from '../../animations/animations';
+import {LoadingService} from '../../loading.service';
+import {Entity} from '../../enums/entity.enum';
+
 
 @Component({
   selector: 'app-character-details',
   templateUrl: './character-details.component.html',
-  styleUrls: ['./character-details.component.scss']
+  styleUrls: ['./character-details.component.scss'],
+  animations: [collapseTriggerAnimation]
 })
 export class CharacterDetailsComponent implements OnInit {
   character: Character;
   homeWorld: Planet;
   relatedFilms: string;
   TooltipPosition = TooltipPosition;
+  showHomeWorld = false;
 
   constructor(
     private characterService: CharacterService,
@@ -33,12 +39,14 @@ export class CharacterDetailsComponent implements OnInit {
     private movieService: MovieService,
     private movieParser: MovieParser,
     private characterParser: CharacterParser,
-    private planetService: PlanetService
+    private planetService: PlanetService,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const characterUrl = `${environment.apiUrl}/people/${params.get('id')}`;
+      this.loadingService.changeLoading({isLoading: true, entity: Entity.MOVIE});
       this.getCharacter(characterUrl);
     });
   }
@@ -63,6 +71,7 @@ export class CharacterDetailsComponent implements OnInit {
   manageBreadCrumbs(params) {
     if (!params.movie) {
       this.addBreadCrumb();
+      this.loadingService.changeLoading({isLoading: false});
       return;
     } else if (params.movie && this.breadCrumbsService.getBreadCrumbs().length === 2) {
       this.addBreadCrumbWithMovie(params.movie);
@@ -77,6 +86,7 @@ export class CharacterDetailsComponent implements OnInit {
       const movie = this.movieParser.parseMovie(response);
       this.addMovieBreadCrumb(movie);
       this.addBreadCrumbWithMovie(movieId);
+      this.loadingService.changeLoading({isLoading: false});
     });
   }
 
@@ -93,6 +103,7 @@ export class CharacterDetailsComponent implements OnInit {
       link: `/characters/${this.characterService.getCharacterId(this.character.url)}`,
       queryParams: {movie: movieId}
     });
+    this.loadingService.changeLoading({isLoading: false});
   }
 
   addMovieBreadCrumb(movie: Movie) {

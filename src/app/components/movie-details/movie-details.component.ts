@@ -8,6 +8,8 @@ import {BreadcrumbsService} from '../../services/breadcrumbs.service';
 import {CharacterService} from '../../services/character.service';
 import {Sort} from '../../utils/sort';
 import {CharacterDTO} from '../../models/dtos/character-dto';
+import {LoadingService} from '../../loading.service';
+import {Entity} from '../../enums/entity.enum';
 
 @Component({
   selector: 'app-movie-details',
@@ -24,7 +26,8 @@ export class MovieDetailsComponent implements OnInit {
     private movieParser: MovieParser,
     private route: ActivatedRoute,
     private breadCrumbsService: BreadcrumbsService,
-    private characterService: CharacterService
+    private characterService: CharacterService,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
@@ -36,6 +39,7 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   getMovie(movieUrl) {
+    this.loadingService.changeLoading({isLoading: true, entity: Entity.MOVIE});
     this.movieService.getMovie(movieUrl).subscribe(response => {
       this.movie = this.movieParser.parseMovie(response);
       this.addBreadCrumb();
@@ -63,6 +67,7 @@ export class MovieDetailsComponent implements OnInit {
     const promises = this.characterService.getCharactersPromises(this.movie.characters);
     Promise.all<CharacterDTO>(promises).then((characters: CharacterDTO[]) => {
       this.characters = characters.sort((a, b) => Sort.sortStringsDesc(a.name, b.name));
+      this.loadingService.changeLoading({isLoading: false});
     });
   }
 }

@@ -1,6 +1,7 @@
 <div class="app">
-  <h1 *ngIf="!isNotFoundPage()" class="app__title">Star Wars Movies</h1>
-  <div class="app__main-content">
+  <h1 *ngIf="!isNotFoundPage() && !loading.isLoading" class="app__title">Star Wars Movies</h1>
+  <app-loading *ngIf="loading.isLoading" [entity]="loading.entity"></app-loading>
+  <div class="app__main-content" [hidden]="loading.isLoading">
     <bread-crumbs></bread-crumbs>
     <router-outlet></router-outlet>
   </div>

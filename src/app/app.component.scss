@@ -1,4 +1,7 @@
 .app {
+
+  [hidden] { display: none !important;}
+
   display: grid;
   padding: 32px;
   margin: 0;
@@ -32,5 +35,4 @@
       background-position: 100% 0;
     }
   }
-
 }

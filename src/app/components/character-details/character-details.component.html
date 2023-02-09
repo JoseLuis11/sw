@@ -7,7 +7,20 @@
       <p>Eye Color: {{character.eyeColor}}</p>
     </div>
     <div class="character-details__info__secondary">
-      <p class="character-details__info__secondary__related-films" [tooltip]="relatedFilms" [position]="TooltipPosition.LEFT">Related Films</p>
+      <p class="character-details__info__secondary__related-films" [tooltip]="relatedFilms" [position]="TooltipPosition.RIGHT">Related Films</p>
+      <div class="character-details__info__secondary__home-world">
+        <button class="character-details__info__secondary__home-world__see-info-button"
+                type="button"
+                (click)="showHomeWorld = !showHomeWorld">{{!showHomeWorld ? 'Show ' : 'Hide '}}
+                Home World
+        </button>
+        <div *ngIf="showHomeWorld" @collapse class="character-details__info__secondary__home-world__info">
+          <p class="character-details__info__secondary__home-world__info__name">{{homeWorld.name}}</p>
+          <p>Population: {{homeWorld.population}}</p>
+          <p>Climate: {{homeWorld.climate}}</p>
+          <p>Gravity: {{homeWorld.gravity}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

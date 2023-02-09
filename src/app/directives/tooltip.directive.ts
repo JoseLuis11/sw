@@ -15,8 +15,8 @@ export class TooltipDirective implements OnDestroy {
   private timer;
 
   constructor(private el: ElementRef) {
-    el.nativeElement.parentElement.style.setProperty('text-decoration', 'underline');
-    el.nativeElement.parentElement.style.setProperty('text-decoration-style', 'dotted');
+    el.nativeElement.style.setProperty('text-decoration', 'underline');
+    el.nativeElement.style.setProperty('text-decoration-style', 'dotted');
   }
 
   ngOnDestroy(): void {

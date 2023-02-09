@@ -1,0 +1,24 @@
+.loading {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  row-gap: 30px;
+  &__light-saber {
+    justify-self: center;
+    rotate: 45deg;
+    animation: fadeIn 1s linear infinite alternate;
+    width: 300px;
+  }
+  &__text {
+    color: #FDD154;
+    justify-self: center;
+    font-family: StarWars, serif;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+}

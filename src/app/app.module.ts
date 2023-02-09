@@ -14,6 +14,8 @@ import {CharacterService} from './services/character.service';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import {DirectivesModule} from './directives/directives.module';
+import {LoadingService} from './loading.service';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {DirectivesModule} from './directives/directives.module';
     HomeComponent,
     MovieDetailsComponent,
     CharacterDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import {DirectivesModule} from './directives/directives.module';
     AppRoutingModule,
     DirectivesModule
   ],
-  providers: [MovieService, BreadcrumbsService, CharacterService],
+  providers: [MovieService, BreadcrumbsService, CharacterService, LoadingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

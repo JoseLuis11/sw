@@ -10,24 +10,45 @@
   }
   &__info {
     display: grid;
-    grid-template-columns: repeat(2, max-content);
     justify-content: center;
-    column-gap: 20px;
     &__main {
-
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      column-gap: 20px;
     }
     &__secondary {
       &__related-films {
         width: max-content;
       }
+      &__home-world {
+        display: grid;
+        justify-content: center;
+        &__see-info-button {
+          text-align: center;
+          color: #FDD154;
+          font-size: inherit;
+          width: max-content;
+          border: solid #FDD154;
+          border-radius: 16px;
+          padding: 12px;
+          cursor: pointer;
+          background-color: transparent;
+          margin-top: 14px;
+        }
+        &__info {
+          &__name {
+            color: #FDD154;
+          }
+        }
+      }
     }
   }
 
-  @media (max-width: 599px) {
+  @media (max-width: 900px) {
     &__info {
-      //grid-template-columns: 100%;
-      &__secondary__related-films {
-        //display: none;
+      justify-content: start;
+      &__main {
+        grid-template-columns: 100%;
       }
     }
   }
