@@ -1,6 +1,6 @@
 <ng-container *ngIf="movie">
   <div class="movie-details">
-    <img class="movie-details__image" [src]="getMovieImageSrc(movie)" alt="">
+    <img class="movie-details__image" [src]="getMovieImageSrc(movie)" [alt]="movie.name + ' movie'">
     <div class="movie-details__info">
       <h2 class="movie-details__info__name">{{movie.name}} ({{movie.releaseDate | date}})</h2>
       <p>Episode: {{movie.episodeNumber}}</p>
